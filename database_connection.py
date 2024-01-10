@@ -4,9 +4,9 @@ from django.shortcuts import render
 import pyodbc
 
 def get_sql_anywhere_connection():
-    server = 'RPOS_Admin'
-    port = '2638'
-    database = 'ECS_RPOS_Admin'
+    server = 'ECS_RPOS_T001'
+    port = '10.5.0.8'
+    database = 'ECS_RPOS_T001'
     username = 'dba'
     password = 'BM@12345246810_mb'
 

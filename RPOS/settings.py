@@ -34,10 +34,10 @@ from django.core.servers.basehttp import WSGIServer
 WSGIServer.handle_error = lambda *args, **kwargs: None
 
 ALLOWED_HOSTS=['*']
-
+STATIC_ROOT='D:\\ECS_RPOS\\RPOS\\static'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000", 
+    "http://localhost:3000"
 ]
 
 
@@ -45,6 +45,8 @@ CORS_ALLOWED_ORIGINS = [
 
 INSTALLED_APPS = [
     'Stores',
+    'MasterData',
+    'Users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -198,7 +198,7 @@ def add_product(request):
             return JsonResponse({"error": "Failed successfully, Please fill all the required fields!"}, status=400)
         print("not not ")
         data = {
-                'Code': request.data['code'],
+                'ProductID': request.data['code'],
                 'Created_By': request.data['created_by'],
                 'Created_on': request.data['created_on'],
                 # 'Org_ID': request.data['org_Id'],
@@ -304,7 +304,7 @@ def fetch_a_product(request):
         print("ciddd")
         cid = request.data['id']
         print(cid)
-        query = "SELECT * FROM \"dba\".\"Product\" WHERE Code = ? "
+        query = "SELECT * FROM \"dba\".\"Product\" WHERE ProductID = ? "
         cursor.execute(query, (cid))
         # result = cursor.fetchall()
         # cursor.execute(query)  
@@ -364,7 +364,7 @@ def edit_mat(request):
         # print(request.data)
         # if existing_data:
         data = {
-                'Code': request.data['code'],
+                'ProductID': request.data['code'],
                 # 'Created_By': request.data['created_by'],
                 # 'Created_on': request.data['created_on'],
                 # 'Org_ID': request.data['org_Id'],
@@ -387,7 +387,7 @@ def edit_mat(request):
         print(request.data['alts'])
         # print(existing_data)  
         update_columns = ', '.join([f'"{col}" = ?' for col in data.keys()])
-        query_update = f"UPDATE \"dba\".\"Product\" SET {update_columns} WHERE \"Code\" = ?"
+        query_update = f"UPDATE \"dba\".\"Product\" SET {update_columns} WHERE \"ProductID\" = ?"
         cursor.execute(query_update, list(data.values()) + [code])
         connection.commit()
 

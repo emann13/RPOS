@@ -1,0 +1,133 @@
+import { NavLink, Navigate } from 'react-router-dom';
+import './UpperNav.css'; 
+import logo from './logo.png'
+import React, { useState, useEffect } from 'react';
+import CIcon from '@coreui/icons-react';
+import * as icon from '@coreui/icons';
+import { Link } from 'react-router-dom';
+import TuneIcon from '@mui/icons-material/Tune'
+import ManageAccountsIcon from  '@mui/icons-material/ManageAccounts';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
+import {Button} from '@material-ui/core';
+
+const UpperNav = ({ toggleNav, children }) => {
+  const logout = () =>{
+    Navigate("/")
+  }
+  const [isNavOpen, setIsNavOpen] = useState(true);
+
+  const handleNavClick = () =>{
+    if (!localStorage.getItem("nav")){
+      localStorage.setItem("nav", true)
+      setIsNavOpen(true)
+    }
+    else 
+    localStorage.setItem("nav", false)
+    setIsNavOpen(false)
+
+  }
+
+  return (
+    <>
+      <div className="upper-navbar"
+      
+      style={{
+        minWidth:"100px"
+      }}
+      
+      >
+
+<div
+style={{
+ marginLeft:"290px",
+ marginTop:"-20px"
+}}
+>
+
+<Link
+        style={{
+          color:"white",
+          marginTop:"-100px",
+          marginLeft:"1250px",
+          fontSize:"15px",
+          marginBottom:"50px",
+        fontWeight:"bolder"
+        }}
+        >
+emanbassemouda
+  
+          
+        </Link>
+
+
+        <div
+        style={{
+          color:"white",
+          marginLeft:"1390px",
+          marginTop:"-21px",
+        }}
+        >
+        &nbsp;   &nbsp; | </div>
+       <div
+       style={{
+        color:"white",
+        marginLeft:"1430px",
+        marginTop:"-20px",
+      }}
+       >
+       <ManageAccountsIcon
+// style={{ fontSize: '40px' }}
+/>
+<Link
+style={{
+  color:"white"
+}
+}
+to ="/"
+>
+<LogoutIcon
+style={{marginLeft:"5px"}}
+onclick={logout}
+/>
+
+</Link>
+
+       </div>
+{/* <img   
+ src={logo} alt="logo Icon" style={{width: '100px', height: '50px' }} /> */}
+        <div
+        onClick={toggleNav}
+        style={{
+          color:"white",
+          marginLeft:"107px",
+          marginTop:"-21px",
+        }}
+        >
+    <MenuIcon 
+style={{
+  fontSize:"30px",
+  color:"white",
+ marginTop:"-10px",
+  marginLeft:"-350px",
+  cursor:"pointer"
+  
+}}
+
+size={50} />
+        
+        
+        </div>
+
+</div>
+
+
+      </div>
+      <div className="main-content">
+        {children}
+      </div>
+    </>
+  );
+}
+
+export default UpperNav;

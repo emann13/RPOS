@@ -23,7 +23,7 @@ def login(request):
         username = request.data['username']
         passw = request.data['passw']
         print(request.data)
-        # Validate email (optional)
+      
         # try:
             # validate_email(username)
         # except ValidationError:
@@ -67,6 +67,10 @@ def login(request):
                 result = cursor.fetchone()
                 print(result)
                 print("resulttt")
+                cursor.execute("SELECT status FROM Admins WHERE username = ?", (username,))
+                result_status = cursor.fetchone()
+                print(result_status)
+                print("resulttt")
                 cursor.execute("SELECT Org_ID FROM Admins WHERE username = ?", (username,))
                 result_org = cursor.fetchone()
                 print("gggggg")
@@ -74,7 +78,7 @@ def login(request):
                 print(result_org)
 
                 print(result[0])
-                return JsonResponse({"message": "Logged in successfully!","permissions":p,"initial":result[0], "UID" :result1[0],"Org" : result_org[0]},status=200)
+                return JsonResponse({"message": "Logged in successfully!","permissions":p,"initial":result[0], "UID" :result1[0],"Org" : result_org[0], "status":result_status[0]},status=200)
             else:
                 print("Invalid password.")
                 return JsonResponse({"message": "Invalid password!"}, status=401)
