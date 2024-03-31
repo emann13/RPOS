@@ -24,6 +24,16 @@ urlpatterns = [
  path('get_License/', views.get_License, name ="get_License"),
  path('edit_license/', views.edit_license, name ="edit_license"),
  path('get_ecs_admin/' , views.get_ecs_admin, name ="get_ecs_admin"),
- path('fetch_users_p/' , views.fetch_users_p, name ="fetch_users_p")
+ path('fetch_users_p/' , views.fetch_users_p, name ="fetch_users_p"),
+ path('fetch_a_role_Auths/',views.fetch_a_role_Auths, name="fetch_a_role_Auths"),
+ path('fetch_an_admin_Auths/',views.fetch_an_admin_Auths, name="fetch_an_admin_Auths"),
+ path('fetch_drivers/' , views.fetch_drivers, name ="fetch_drivers"),
+ path('add_driver/', views.add_driver, name ="add_driver"),
+ path('edit_driver/', views.edit_driver, name ="edit_driver"),
+ path('delete_driver/', views.delete_driver, name ="delete_driver"),
+ path('fetch_customers/', views.fetch_customers, name ="fetch_customers"),
+ path('export_users_to_excel/', views.export_users_to_excel, name ="export_users_to_excel"),
+ path('fetch_user_addresses/', views.fetch_user_addresses, name ="fetch_user_addresses"),
+
 
 ]
